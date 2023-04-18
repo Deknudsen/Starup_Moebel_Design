@@ -147,3 +147,12 @@ export default {
   }),
 }
 </script>
+
+<style lang="scss">
+  @import "@/assets/style/variables";
+
+  h1 {
+    color: $Primary;
+  }
+
+</style>
