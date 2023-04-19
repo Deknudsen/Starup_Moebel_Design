@@ -1,12 +1,12 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-app>
+<HeaderComponent/>
+<router-view/>
 </template>
 
 <script>
+
+import HeaderComponent from '@/components/HeaderComponent.vue'
+
 
 export default {
   name: 'App',
@@ -14,5 +14,9 @@ export default {
   data: () => ({
     //
   }),
+  components: {
+    HeaderComponent
+  },
 }
 </script>
+
