@@ -1,6 +1,8 @@
 <template>
   <header>
-    <div class="logo"> logo </div>
+    <div class="logo"> 
+        <router-link to="/"> Logo </router-link>
+    </div>
     <div class="headerlinks">
         <router-link to="/"> Forside </router-link>
         <router-link to="/buildabed"> Build-a-Bed </router-link>
