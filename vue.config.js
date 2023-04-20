@@ -8,11 +8,11 @@ module.exports = defineConfig({
 		}
   },
 
-  // css: {
-  //   loaderOptions: {
-  //     sass: {
-  //       data: `@import "@/assets/style/variables";`
-  //     }
-  //   }
-  // }
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/assets/style/variables";`
+      }
+    }
+  }
 })

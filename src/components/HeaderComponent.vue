@@ -21,13 +21,15 @@
 </script>
 
 <style lang="scss" scoped>
+//@import "@/assets/style/variables";
+
   header {
     display: flex;
     justify-content: right;
     align-items: center;
     height: 90px;
     width: 100%;
-    background-color: rgb(243, 235, 222);
+    background-color: $White;
   }
 
   .logo {
@@ -44,6 +46,7 @@
         padding: 0 50px 0 50px;
         text-decoration: none;
         color: black;
+        font-family: $TitleFont;
     }
 
     .router-link-exact-active {
