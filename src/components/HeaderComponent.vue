@@ -50,7 +50,7 @@
     }
 
     .router-link-exact-active {
-        color: rgb(184, 124, 11);
+        color: $Secondary;
   }
 }
 </style>
