@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDKBr9aaU7EKcBN76cP-LqE2GQ9iKm9E2A",
-  authDomain: "starup-moebel-design.firebaseapp.com",
-  projectId: "starup-moebel-design",
-  storageBucket: "starup-moebel-design.appspot.com",
-  messagingSenderId: "622586509177",
-  appId: "1:622586509177:web:b529f65e7fabee899921a8"
+  apiKey: "AIzaSyCEHB2kYBE1qAGHwE4WpkPcJtYc-rGl-ig",
+  authDomain: "starup-moebel-design-e97cd.firebaseapp.com",
+  projectId: "starup-moebel-design-e97cd",
+  storageBucket: "starup-moebel-design-e97cd.appspot.com",
+  messagingSenderId: "803413664946",
+  appId: "1:803413664946:web:0f1c0e5f0ae0a22d11d5ab"
 };
 
 // Initialize Firebase
