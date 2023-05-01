@@ -20,3 +20,13 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+  
+//Header
+.header {
+  font-family: $TitleFont;
+  font-size: 24px;
+  color: $Black;
+}
+
+</style>
