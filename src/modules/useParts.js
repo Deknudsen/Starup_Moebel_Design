@@ -21,7 +21,7 @@ const useParts = () => {
     }
 
     // Create a part
-    const addPart = async (addPartsInfo) => {
+    const addPart = async (addPartInfo) => {
         await addDoc(partDataRef, {
             title: addPartInfo.title,
             date: addPartInfo.date,
