@@ -40,6 +40,16 @@ const routes = [
     path: '/kontakt',
     name: 'kontakt',
     component: () => import(/* webpackChunkName: "about" */ '../views/KontaktView.vue')
+  },
+  {
+    path: '/adminParts',
+    name: 'admin parts',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/parts/AdminPartsView.vue')
+  },
+  {
+    path: '/adminEditParts/:id',
+    name: 'admin edit parts',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/parts/AdminEditPartsView.vue')
   }
 ]
 

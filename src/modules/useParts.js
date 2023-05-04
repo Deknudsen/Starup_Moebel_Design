@@ -7,7 +7,7 @@ const useParts = () => {
 
     const partsData = ref([])
 
-    const partsDataRef = collection(db, "parts")
+    const partDataRef = collection(db, "parts")
 
     const getPartsData = () => {
         onSnapshot(partDataRef, (snapshot) => {
@@ -24,8 +24,7 @@ const useParts = () => {
     const addPart = async (addPartInfo) => {
         await addDoc(partDataRef, {
             title: addPartInfo.title,
-            date: addPartInfo.date,
-            description: addPartInfo.description
+            description: addPartInfo.description,
         }).then (() => {
             router.push({ path: '/adminParts' })
         })
@@ -35,8 +34,7 @@ const useParts = () => {
     const editPart = async (editPartInfo) => {
         await updateDoc(doc(partDataRef, editPartInfo.id), {
             title: editPartInfo.title,
-            date: editPartInfo.date,
-            description: editPartInfo.description
+            description: editPartInfo.description,
         }).then (() => {            
             router.push({ path: '/adminParts' })
         })
