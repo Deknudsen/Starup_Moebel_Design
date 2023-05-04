@@ -1,9 +1,5 @@
 <template>
-  <!-- <HelloWorld /> -->
 
-<!--   <div class="heroBox">
-    <v-img src="../assets/frontpagepic.jpg" alt="placehold img" gradient="to top right, #9F755155, #D1A67C55"></v-img>
-  </div> -->
 
   <v-carousel cycle height="600" hide-delimiters :show-arrows="false">
     <v-carousel-item
@@ -17,7 +13,6 @@
       </div>
     </router-link>
   </v-carousel-item>
-<!-- </div> -->
 
   <v-carousel-item
     src="../assets/painting.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
@@ -33,21 +28,7 @@
 </template>
 
 <script>
-<<<<<<< Updated upstream
-=======
-/* import { defineComponent } from 'vue';
->>>>>>> Stashed changes
 
-// Components
-
-
-<<<<<<< Updated upstream
-=======
-  components: {
-    HelloWorld,
-  },
-}); */
->>>>>>> Stashed changes
 </script>
 
 <style lang="scss" scoped>
