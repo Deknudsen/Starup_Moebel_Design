@@ -20,12 +20,9 @@
 import { onMounted, ref } from 'vue'
 import useParts from '@/modules/useParts'
     
-
     let addPartInfo = ref({})    
     const { addPart, partsData, getPartsData } = useParts()
-    
         
-    
     onMounted(() => {
         getPartsData()
     })

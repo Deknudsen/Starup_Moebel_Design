@@ -2,11 +2,11 @@
     <div>
         <div v-for="faqs in faqsData" :key="faqs">
     
-    <div>
-        <h2>{{faqs.title}}</h2>
-    </div>
-</div>
-<div class="createBox">
+            <div>
+                <h2>{{faqs.title}}</h2>
+            </div>
+        </div>
+        <div class="createBox">
             <v-text-field class="inputField" variant="solo" label="Title" v-model="addFaqInfo.title"></v-text-field>
             <v-text-field class="inputField" variant="solo" label="Description" v-model="addFaqInfo.description"></v-text-field>
         
@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { onMounted, ref } from 'vue'
 import useFaqs from '@/modules/useFaqs'
     
