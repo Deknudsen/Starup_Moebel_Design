@@ -23,8 +23,8 @@ const useFaqs = () => {
     // Create a FAQ
     const addFaq = async (addFaqInfo) => {
         await addDoc(faqDataRef, {
-            title: addFaqInfo.title,
-            description: addFaqInfo.description,
+            question: addFaqInfo.question,
+            answer: addFaqInfo.answer,
         }).then (() => {
             router.push({ path: '/adminFaqs' })
         })
@@ -33,12 +33,20 @@ const useFaqs = () => {
     // Edit and update an already made FAQ
     const editFaq = async (editFaqInfo) => {
         await updateDoc(doc(faqDataRef, editFaqInfo.id), {
-            title: editFaqInfo.title,
-            description: editFaqInfo.description,
+            question: editFaqInfo.question,
+            answer: editFaqInfo.answer,
         }).then (() => {            
             router.push({ path: '/adminFaqs' })
         })
     }
+
+    const updateSingleItem = async(id) => {
+
+        await updateDoc(doc(faqDataRef, id), {
+          question: faqsData.value.find(faq => faq.id === id).question,
+          answer: faqsData.value.find(faq => faq.id === id).answer,
+        });
+        } 
 
     // Delete a FAQ
     const deleteFaq = async (id) => {
@@ -51,6 +59,7 @@ const useFaqs = () => {
         getFaqsData,
         addFaq,
         editFaq,
+        updateSingleItem,
         deleteFaq
     }
 }
