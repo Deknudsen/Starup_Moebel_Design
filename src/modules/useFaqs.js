@@ -40,14 +40,6 @@ const useFaqs = () => {
         })
     }
 
-    const updateSingleItem = async(id) => {
-
-        await updateDoc(doc(faqDataRef, id), {
-          question: faqsData.value.find(faq => faq.id === id).question,
-          answer: faqsData.value.find(faq => faq.id === id).answer,
-        });
-        } 
-
     // Delete a FAQ
     const deleteFaq = async (id) => {
         await deleteDoc(doc(db, "faqs", id))
@@ -59,7 +51,6 @@ const useFaqs = () => {
         getFaqsData,
         addFaq,
         editFaq,
-        updateSingleItem,
         deleteFaq
     }
 }

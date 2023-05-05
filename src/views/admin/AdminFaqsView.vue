@@ -16,6 +16,7 @@
                 <v-text-field class="inputField" variant="solo" label="Answer" v-model="faqs.answer"></v-text-field>
 
                 <v-btn class="inputBtn" @click="editFaq(faqs)">Edit</v-btn>
+                <v-btn class="inputBtn" @click="deleteFaq(faqs.id)">Delete</v-btn>
             </v-card>
 
         </div>
@@ -29,7 +30,7 @@ import useFaqs from '@/modules/useFaqs'
     
 
     let addFaqInfo = ref({})    
-    const { addFaq, faqsData, getFaqsData, editFaq } = useFaqs()
+    const { addFaq, faqsData, getFaqsData, editFaq, deleteFaq } = useFaqs()
     
         
     
