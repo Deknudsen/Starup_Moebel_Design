@@ -12,10 +12,10 @@
                 <h2>{{faqs.question}}</h2>
                 <h3>{{faqs.answer}}</h3>
             
-                <v-text-field class="inputField" variant="solo" label="Question" v-model="editFaqInfo.question"></v-text-field>
-                <v-text-field class="inputField" variant="solo" label="Answer" v-model="editFaqInfo.answer"></v-text-field>
+                <v-text-field class="inputField" variant="solo" label="Question" v-model="faqs.question"></v-text-field>
+                <v-text-field class="inputField" variant="solo" label="Answer" v-model="faqs.answer"></v-text-field>
 
-                <v-btn class="inputBtn" @click="editFaq(faqsData.id)">Edit</v-btn>
+                <v-btn class="inputBtn" @click="editFaq(faqs)">Edit</v-btn>
             </v-card>
 
         </div>

@@ -1,6 +1,5 @@
 <template>
-    <div>
-    
+    <div>    
         <div v-for="parts in partsData" :key="parts">
     
                 <div>
