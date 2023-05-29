@@ -55,6 +55,16 @@ const routes = [
     path: '/adminFaqs',
     name: 'admin faqs',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/AdminFaqsView.vue')
+  },
+  {
+    path: '/adminHome',
+    name: 'admin home',
+    component: () => import('../views/admin/home/AdminHomePageView.vue')
+  },
+  {
+    path: '/adminCarosel',
+    name: 'admin carosel',
+    component: () => import('../views/admin/home/AdminCaroselPageView.vue')
   }
 ]
 
