@@ -1,18 +1,18 @@
 <template>
     <div>
         <div class="mainBox">
-        <div class="leftBox">
-        <div class="header">
-            Om Starup Møbel Design
+            <div class="leftBox">
+                <div class="header">
+                    Om Starup Møbel Design
+                </div>
+                <div class="mainText">
+                    loremipsumloremipsum lorum ipsum loresoignjaæoiegnæaerg ajeoiajwt alernaoeirj 
+                </div>
+            </div>
+        <div class="rightBox">
+            <v-img src="../assets/placehold.png" alt="placehold img" gradient="to top right, #9F755155, #D1A67C55"></v-img>
         </div>
-        <div class="mainText">
-            loremipsumloremipsum lorum ipsum loresoignjaæoiegnæaerg ajeoiajwt alernaoeirj 
-        </div>
-    </div>
-    <div class="rightBox">
-        <v-img src="../assets/placehold.png" alt="placehold img" gradient="to top right, #9F755155, #D1A67C55"></v-img>
       </div>
-     </div>
     </div>
 </template>
 

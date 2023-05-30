@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { getAuth } from 'firebase/auth'
 
 
 const routes = [
@@ -22,9 +23,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/BuildaBedView.vue')
   },
   {
-    path: '/senge',
-    name: 'senge',
-    component: () => import(/* webpackChunkName: "about" */ '../views/SengeView.vue')
+    path: '/produkter',
+    name: 'produkter',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProdukterView.vue')
   },
   {
     path: '/maleguide',
@@ -57,6 +58,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/AdminFaqsView.vue')
   },
   {
+    path: '/produktSide/:id',
+    name: 'produktSide',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProduktSideView.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+  },
+  {
     path: '/adminHome',
     name: 'admin home',
     component: () => import('../views/admin/home/AdminHomePageView.vue')
@@ -71,6 +82,29 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    getAuth(),
+    (user) => {
+      removeEventListener();
+      resolve(user)
+    },
+    reject 
+  })
+}
+
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth) // some= array filter function
+  if(requiresAuth) {
+    if(getCurrentUser) {
+      next();
+    }
+  }
+  else {
+    next()
+  }
 })
 
 export default router
