@@ -43,7 +43,7 @@ import useParts from '@/modules/useParts'
     let addPartInfo = ref({})
     let selectedFile = ref({})
 
-    const { partsData, getPartsData, uploadImage, addPart } = useParts()
+    const { partsData, getPartsData, uploadImage, addPart, } = useParts()
 
     const handleFileUpload = (event) => {
         selectedFile = event.target.files[0]
