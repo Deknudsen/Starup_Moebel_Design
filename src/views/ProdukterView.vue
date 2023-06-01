@@ -5,13 +5,19 @@
 
         <div class="gallery"> 
           <div class="imageBox" v-for="image in images" :key="image">
+            <div class="productContainer">
             <router-link :to="{ name: 'produktSide', params:{ id : image.id }}">
               <div class="cardBox">     
                 <div class="galleryImage">
                  <img :src="image.src" :alt="image.title" /> 
                 </div>
+                <div class="overlayContainer">
+                  <div class="overlay"></div>
+                  <p class="galleryImageTitle"> image title title title title title title title </p>
+                </div>
               </div>
             </router-link>
+            </div>
           </div>
         </div>
      </div> 
@@ -95,20 +101,9 @@ export default {
     margin: 70px 10% 130px 10%;
   }
 
-.productCards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-top: 50px;
-    border: #272727;
-    
-}
-
 a:link {
     text-decoration: none;
 }
-
 .cardBox {
     height: 450px;
     width: 400px;
@@ -118,7 +113,6 @@ a:link {
     border-style: solid 3px;
     border-color: rgb(218, 218, 218);
 }
-
 .galleryImage {
     height: 100%;
     width: auto;
@@ -135,17 +129,43 @@ a:link {
         overflow: hidden;
     }
  }
-
-.infoBox {
-    display: flex;
-    justify-content: center; 
-    margin: 15px;
-    flex-direction: column;
-    text-align: left;
-    color: #272727;
+.productContainer {
+  position: relative;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: $Tertiary;
+}
 
+.productContainer:hover .overlay {
+  opacity: 0.7;
+}
 
+.galleryImageTitle {
+  color: $Black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.productContainer:hover .galleryImageTitle {
+  opacity: 1;
+}
 
 </style>
