@@ -76,6 +76,21 @@ const routes = [
     path: '/adminCarosel',
     name: 'admin carosel',
     component: () => import('../views/admin/home/AdminCaroselPageView.vue')
+  },
+  {
+    path: '/adminProducts',
+    name: 'admin products',
+    component: () => import('../views/admin/products/AdminProductsView.vue')
+  },
+  {
+    path: '/adminAddProducts',
+    name: 'admin add products',
+    component: () => import('../views/admin/products/AdminAddProductView.vue')
+  },
+  {
+    path: '/adminEditProducts/:id',
+    name: 'admin edit products',
+    component: () => import('../views/admin/products/AdminEditProductView.vue')
   }
 ]
 
