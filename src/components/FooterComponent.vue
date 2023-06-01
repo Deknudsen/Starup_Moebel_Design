@@ -5,9 +5,13 @@
         
         <div class="SoMe">
             <div class="SoMeTekst"> Følg os: </div>
-            <v-img class="facebookIcon" src="../assets/fb.png" alt="placehold img"></v-img>
+            <div class="facebookIconBoks">
+                <a href="https://www.facebook.com/groups/1592867194369757">
+                    <v-img class="facebookIcon" src="../assets/fb.png" alt="placehold img"></v-img>
+                </a>
+            </div>
         </div>
-       
+        
     </div>
 </template>
 
@@ -22,6 +26,7 @@
     background-color: $Tertiary;
     font-family: $MainFont;
     color: $Black;
+    
 
 
     a {
@@ -29,16 +34,28 @@
     }
 }
 
+.footerContact {
+    padding: 0 20px 0 20px;
+}
 .SoMe {
     height: 50px;
     width: auto;
+    text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;    
-
+    align-items: center;
 }
-.facebookIcon {
-    height: 40px;
+ .facebookIconBoks {
+    height: 35px;
+    width: 35px;
+    margin-left: 20px;
+ }
+ .facebookIcon {
+    height: 35px;
     width: auto;
+}
+
+.facebookIcon:hover {
+    opacity: 0.7;
 }
 </style>

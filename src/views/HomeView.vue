@@ -65,34 +65,9 @@
   </div>
 </div>
 
-        <button v-if="isLoggedin">
-              <v-btn @click="logOut()">
-              Logout
-            </v-btn>
-        </button>
-
 </template>
 
 <script setup>
-
-import { getAuth, onAuthStateChanged } from '@firebase/auth';
-import { ref, onMounted } from 'vue'
-import useUser from '../modules/useUsers'
-const { logOut } = useUser()
-let auth
-const isLoggedin = ref(false)
-onMounted(() => {
-    auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if(user) {
-            isLoggedin.value = true
-        }
-        else {
-            isLoggedin.value = false
-        }
-        
-    })
-})
 
 
 </script>
