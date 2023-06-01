@@ -10,8 +10,8 @@ const useCarousel = () => {
     const carouselDataRef = collection(db, "carousel")
 
 
-    const getCarouselsData = () => {
-        onSnapshot(carouselDataRef, (snapshot) => {
+    const getCarouselsData = async () => {
+        await onSnapshot(carouselDataRef, (snapshot) => {
             carouselsData.value = snapshot.docs.map(doc => {
                 return {
                     ...doc.data(),
@@ -36,7 +36,6 @@ const useCarousel = () => {
         await uploadTask;
 
         const downloadURL = await getDownloadURL(uploadImageRef);
-        console.log(uploadImageRef);
 
         await addDoc(carouselDataRef, {
             text: addCarouselInfo.text,
@@ -51,7 +50,6 @@ const useCarousel = () => {
 
     // Edit and update an already made part
     const editCarousel = async (/* selectedFile, */ editCarouselInfo) => {
-        console.log(editCarouselInfo.updatedText)
         await updateDoc(doc(carouselDataRef, editCarouselInfo.id), {
             text: editCarouselInfo.updatedText,
             link: editCarouselInfo.updatedLink
