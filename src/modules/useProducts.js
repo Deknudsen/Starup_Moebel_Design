@@ -37,7 +37,6 @@ const useProducts = () => {
         await uploadTask;
 
         const downloadURL = await getDownloadURL(uploadImageRef)
-        console.log(uploadImageRef)
 
         await addDoc(productDataRef, {
             title: addProductInfo.title,
@@ -53,9 +52,7 @@ const useProducts = () => {
 
     // Edit and update an already made part
     const editProduct = async ( selectedFile, editProductInfo) => {
-        console.log(selectedFile)
         if(selectedFile !== null && selectedFile !== undefined) {
-            console.log("Med billede")
             const storageRefPath = storageRef(storage, 'images/product/' + editProductInfo.imageName)
             await deleteObject(storageRefPath)
             const filename = selectedFile.name;
@@ -82,7 +79,6 @@ const useProducts = () => {
             })
         }
         else {
-            console.log("uden billede")
             await updateDoc(doc(productDataRef, editProductInfo.id), {
                 title: editProductInfo.title,
                 text: editProductInfo.text,
@@ -90,13 +86,6 @@ const useProducts = () => {
                 router.push({ path: '/adminProducts' })
             })
         } 
-    }
-
-    // Edit and update if slide is active
-    const editActive = async (editProductInfo) => {
-        updateDoc(doc(productDataRef, editProductInfo.id), {
-            isActive: editProductInfo.isActive
-        })
     }
 
     // Delete a product
@@ -115,7 +104,6 @@ const useProducts = () => {
         getProductsData,
         addProduct,
         editProduct,
-        editActive,
         deleteProduct
     }
 }

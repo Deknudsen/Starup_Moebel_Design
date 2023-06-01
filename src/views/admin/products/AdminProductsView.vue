@@ -13,13 +13,7 @@
                 </div>
               </div>
             </router-link>
-            <!-- <img :src="product.imageUrl" :alt="product.name"> -->
-            <!-- <div class="cardBox" @click="updatePage(product)">
-                <h2>{{ product.name }}</h2>
-                <div class="galleryImage">
-                 <img :src="product.imageUrl" :alt="product.name" /> 
-                </div>
-            </div> -->
+            
           </div>
         </div>
      </div> 
@@ -35,11 +29,7 @@ import router from '@/router'
 
     const addProductSite = () => {
         router.push({path: "/adminAddProducts"})
-    }
-
-    /* const updatePage = (product) => {
-        router.push({ name: 'admin edit products', params: {id: product.id}})
-    } */
+    }    
 
     onMounted (() => {
         getProductsData()

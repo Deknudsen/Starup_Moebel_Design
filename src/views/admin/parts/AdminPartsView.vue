@@ -1,101 +1,111 @@
 <template>
-    <div>        
-        <div class="createBox">
-            <v-text-field class="inputField" variant="solo" label="Title" v-model="addPartInfo.title"></v-text-field>
-            <v-text-field class="inputField" variant="solo" label="Description" v-model="addPartInfo.description"></v-text-field>
-            <v-file-input class="inputField" variant="solo" label="Image input" @change="handleFileUpload" accept="image/png, image/jpeg, image/jpg, image/bmp"></v-file-input>
-            <v-btn class="inputBtn" @click="addPart(selectedFile, addPartInfo)">Create</v-btn>            
-        </div>
-        <div class="partCartContainer">            
-            <div class="partCart" v-for="part in partsData" :key="part">
-                <div v-if="!part.editing">
-                    <div>
-                        <h2>{{ part.title }}</h2>
-                    </div>
-                    <div>
-                        <p>{{ part.description }}</p>
-                    </div>
-                    <div>
-                        <img class="cardImg" :src="part.imageUrl" :alt="part.name">
-                    </div>
-                    <div>
-                        <button @click="enableEditing(part)">Edit</button>
-                    </div>
+    <div>
+        <div class="sengeHeader"> Her vises de forskellige dele, som vi tilbyder til vores samle selv senge. </div>
+        <button @click="addPartSite">Tilføj Del</button>
+
+        <div class="gallery"> 
+          <div class="imageBox" v-for="part in partsData" :key="part">
+            <router-link :to="{ name:'admin edit parts', params:{ id : part.id }}">
+              <div class="cardBox">
+                <h2>{{ part.title }}</h2>
+                <div class="galleryImage">
+                 <img :src="part.imageUrl" :alt="part.name" /> 
                 </div>
-                <div v-else>
-                    <v-text-field class="inputField" variant="solo" label="Title" v-model="part.updatedTitle"></v-text-field>
-                    <v-text-field class="inputField" variant="solo" label="Description" v-model="part.updatedDescription"></v-text-field>
-                    <v-file-input class="inputField" variant="solo" label="Image input"  accept="image/png, image/jpeg, image/jpg, image/bmp"></v-file-input>
-                    <v-btn class="inputBtn" @click="uploadImage(selectedFile, addPartInfo)">Edit</v-btn> 
-                    <div>
-                        <button @click="cancelEditing(part)">cancel</button>
-                    </div>
-                </div>
-            </div>
+              </div>
+            </router-link>
+            
+          </div>
         </div>
-    </div>
+     </div> 
+
 </template>
-    
+
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import useParts from '@/modules/useParts'
-    
-    let addPartInfo = ref({})
-    let selectedFile = ref({})
+import router from '@/router'
 
-    const { partsData, getPartsData, uploadImage, addPart, } = useParts()
+    const { getPartsData, partsData } = useParts()
 
-    const handleFileUpload = (event) => {
-        selectedFile = event.target.files[0]
-    }
+    const addPartSite = () => {
+        router.push({path: "/adminAddParts"})
+    }    
 
-    const enableEditing = (part) => {
-        part.editing = true
-        part.updatedTitle = part.title
-        part.updatedDescription = part.description
-    }
-
-    const cancelEditing = (editPartInfo) => {
-        editPartInfo.editing = false
-    }
-        
-    onMounted(() => {        
+    onMounted (() => {
         getPartsData()
     })
-    
-</script>
-    
-<style lang="scss" scoped>
-    .createBox {
-    width: 70%;
-    margin:50px auto;
 
-    .inputField {
-        height: 50px;
-        margin: 50px 0;
-        
-    }
-    .inputBtn {
-        margin: 50px 0;
-    }
+</script>
+
+<style lang="scss" scoped>
+.sengeHeader {
+    height: 200px;
+    width: 100%;
+    font-family: $TitleFont;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.partCartContainer {
+
+.gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 10%;
-    .partCart {
-        width:22%;
-        display: flex;
-        .cardImg {
-            max-height: 200px;
-            width: 200px;
-        }
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 70px 10% 130px 10%;
+  }
+
+.partCards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 50px;
+    border: #272727;
+    
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.cardBox {
+    height: 450px;
+    width: 400px;
+    background-color: rgb(240, 240, 240);
+    filter: drop-shadow(5px 5px 4px rgb(132, 115, 103));
+    border-radius: 5px;
+    border-style: solid 3px;
+    border-color: rgb(218, 218, 218);
+}
+
+.galleryImage {
+    height: 100%;
+    width: auto;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+     img {
+        object-fit: cover;
+        width:auto;
+        height: 100%;
+        overflow: hidden;
     }
-    &::after {
-        //content: "";
-        flex: auto;
-    }
+ }
+
+.infoBox {
+    display: flex;
+    justify-content: center; 
+    margin: 15px;
+    flex-direction: column;
+    text-align: left;
+    color: #272727;
 }
 
 </style>
