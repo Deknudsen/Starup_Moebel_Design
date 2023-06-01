@@ -67,7 +67,6 @@ const useParts = () => {
             await uploadTask
 
             const downloadURL = await getDownloadURL(uploadImageRef)
-        console.log(uploadImageRef);
             await updateDoc(doc(partDataRef, editPartInfo.id), {
                 title: editPartInfo.title,
                 text: editPartInfo.text,

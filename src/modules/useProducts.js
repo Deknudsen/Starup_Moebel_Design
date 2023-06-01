@@ -67,7 +67,6 @@ const useProducts = () => {
             await uploadTask
 
             const downloadURL = await getDownloadURL(uploadImageRef)
-        console.log(uploadImageRef);
             await updateDoc(doc(productDataRef, editProductInfo.id), {
                 title: editProductInfo.title,
                 text: editProductInfo.text,
