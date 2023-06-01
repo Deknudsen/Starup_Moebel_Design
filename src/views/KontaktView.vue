@@ -98,36 +98,19 @@ iframe {
     padding: 35px;
 }
 
-.phone {
+.phone, .mail, .address {
     width: 100px;
     height: 100px;
-    background-color: orange;
+    background-color: $Secondary;
     border-radius: 50%;
     display: flex;
     justify-content: center;
 
-}
-
-.mail {
-    width: 100px;
-    height: 100px;
-    background-color: rgb(221, 145, 4);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
 }
 .phoneBox, .mailBox, .addressBox {
     height: 100px;
     display: flex;
     margin-bottom: 30px;
-}
-.address {
-    width: 100px;
-    height: 100px;
-    background-color: rgb(207, 137, 9);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
 }
 .phoneText, .mailText, .addressText {
     padding-left: 50px;

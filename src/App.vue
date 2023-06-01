@@ -1,11 +1,13 @@
 <template>
 <HeaderComponent/>
 <router-view/>
+<FooterComponent/>
 </template>
 
 <script>
 
 import HeaderComponent from '@/components/HeaderComponent.vue'
+import FooterComponent from '@/components/FooterComponent.vue'
 import { ref, onMounted } from 'vue'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 /* import firebase from './firebase';
@@ -48,8 +50,9 @@ export default {
     //
   }),
   components: {
-    HeaderComponent
-  },
+    HeaderComponent,
+    FooterComponent
+},
 }
 </script>
 

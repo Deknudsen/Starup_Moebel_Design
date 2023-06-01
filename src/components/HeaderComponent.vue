@@ -47,7 +47,7 @@ onMounted(() => {
     align-items: center;
     height: 90px;
     width: 100%;
-    background-color: $White;
+    background-color: $Tertiary;
   }
 
   .logo {
