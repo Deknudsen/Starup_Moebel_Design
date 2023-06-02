@@ -22,6 +22,17 @@ const useCarousel = () => {
         })
     }
 
+    const getActiveCarouselsData = async () => {
+        await onSnapshot(carouselDataRef, (snapshot) => {
+            carouselsData.value = snapshot.docs.map(doc => {
+                 return {
+                    ...doc.data(),
+                    id: doc.id,
+                }
+            }).filter(i => i.isActive)
+        })
+    }
+
     // Create a carousel
     const addCarousel = async (selectedFile, addCarouselInfo) => {
         const filename = selectedFile.name;
@@ -95,7 +106,8 @@ const useCarousel = () => {
         addCarousel,
         editCarousel,
         editActive,
-        deleteCarousel
+        deleteCarousel,
+        getActiveCarouselsData
     }
 }
 
