@@ -4,16 +4,16 @@
 
 
         <div class="gallery"> 
-          <div class="imageBox" v-for="image in images" :key="image">
+          <div class="imageBox" v-for="product in productsData" :key="product">
             <div class="productContainer">
-            <router-link :to="{ name: 'produktSide', params:{ id : image.id }}">
+            <router-link :to="{ name: 'produktSide', params:{ id : product.id }}">
               <div class="cardBox">     
                 <div class="galleryImage">
-                 <img :src="image.src" :alt="image.title" /> 
+                 <img :src="product.imageUrl" :alt="product.name" /> 
                 </div>
                 <div class="overlayContainer">
                   <div class="overlay"></div>
-                  <p class="galleryImageTitle"> image title title title title title title title </p>
+                  <p class="galleryImageTitle"> {{ product.title }} </p>
                 </div>
               </div>
             </router-link>
@@ -24,8 +24,19 @@
 
 </template>
 
-<script>
-export default {
+<script setup>
+
+import useProducts from '@/modules/useProducts';
+import { onMounted } from 'vue';
+
+
+const { productsData, getProductsData } = useProducts()
+
+onMounted(() => {
+    getProductsData()
+})
+
+/* export default {
   data() {
     return {
       images: [
@@ -77,7 +88,7 @@ export default {
       ],
     };
   },
-};
+}; */
 </script>
 
 <style lang="scss" scoped>
