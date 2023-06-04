@@ -1,100 +1,110 @@
 <template>
-
-
-  <v-carousel cycle height="600" hide-delimiters :show-arrows="false">
-    <v-carousel-item
-    src="../assets/woodcut.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
-    cover>    
-    <router-link to="/senge" class="carouselLink">
-      <div class="carouselBoxOne"> 
-        <div class="carouselBoxText"> 
-          <p>huuhhuuh</p> 
+  <div>
+    <v-carousel cycle height="600" :show-arrows="false">
+      <v-carousel-item v-for="carousel in carouselsData" :key="carousel">
+        <router-link :to="carousel.link" class="carouselLink">
+          <v-img class="carouselImage" :src="carousel.imageUrl" :alt="carousel.name" cover>
+            <div class="carouselBoxOne">
+              <div class="carouselBoxText">
+                <p>{{ carousel.text }}</p>
+              </div>
+            </div>
+          </v-img>
+        </router-link>
+      </v-carousel-item>
+    </v-carousel>
+    <div class="homeContainer">
+      <div class="roundImage">
+        <v-img class="roundImage" cover src="../assets/lampe.png" alt="placehold img"></v-img>
+      </div>
+      <div class="homeText">
+        <div class="homeTextTitle"> Starup Møbel Design </div>
+        <div class="homeTextCustomText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum. </div>
+        <div class="homeCTA"> Find inspiration fra vores tidligere produkter, eller tag kontakt til os og find ud af,
+          hvordan vi imødekommer dine ønsker. </div>
+        <div class="buttons">
+          <router-link to="/produkter">
+            <v-btn class="buttonGallery">
+              Galleri
+            </v-btn>
+          </router-link>
+          <router-link to="/kontakt">
+            <v-btn class="buttonContact">
+              Kontakt os
+            </v-btn>
+          </router-link>
         </div>
       </div>
-    </router-link>
-  </v-carousel-item>
-
-  <v-carousel-item
-    src="../assets/painting.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
-    cover
-  ></v-carousel-item>
-
-  <v-carousel-item
-    src="../assets/child.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
-    cover
-  ></v-carousel-item>
-</v-carousel>
-
-<div class="homeContainer">
-  <div class="roundImage">
-    <v-img class="roundImage" cover src="../assets/lampe.png" alt="placehold img"></v-img>
-  </div>
-  <div class="homeText">
-    <div class="homeTextTitle"> Starup Møbel Design </div>
-    <div class="homeTextCustomText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
-    <div class="homeCTA"> Find inspiration fra vores tidligere produkter, eller tag kontakt til os og find ud af, hvordan vi imødekommer dine ønsker. </div>
-    <div class="buttons">
-      <router-link to="/produkter">
-        <v-btn class="buttonGallery">
-          Galleri
-        </v-btn>
-      </router-link>
-      <router-link to="/kontakt" > 
-        <v-btn class="buttonContact">
-          Kontakt os
-        </v-btn>
-      </router-link>
+    </div>
+    <div class="FSCboks">
+      <div class="FSCText">
+        <div class="FSCtitle">
+          Vi støtter miljøet
+        </div>
+        <div class="FSCtekst">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
+        </div>
+      </div>
+      <div class="FSClogo">
+        <a href="https://dk.fsc.org/dk-da/intro-til-fsc/hvad-er-fsc">
+          <v-img class="FSClogo" src="../assets/FSC.png" alt="placehold img"></v-img>
+        </a>
+      </div>
     </div>
 
   </div>
-</div>
-
-<div class="FSCboks">
-<div class="FSCText">
-    <div class="FSCtitle">
-      Vi støtter miljøet
-    </div>
-    <div class="FSCtekst">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-</div>
-  <div class="FSClogo">
-    <a href="https://dk.fsc.org/dk-da/intro-til-fsc/hvad-er-fsc">
-      <v-img class="FSClogo" src="../assets/FSC.png" alt="placehold img"></v-img>
-    </a> 
-  </div>
-</div>
-
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import useCarousel from '@/modules/useCarousel'
 
+const { carouselsData, getActiveCarouselsData } = useCarousel()
+
+onMounted (() => {
+  getActiveCarouselsData()
+})
 
 </script>
 
 <style lang="scss" scoped>
-  
-.v-carousel-item {
-  filter: grayscale(80%);
+.v-carousel__controls {
+  background: transparent;
 }
+
 .carouselLink {
-  width:100%;
+  width: 100%;
   height: 100%;
 }
- .carouselBoxOne {
+
+.carouselBoxOne {
   display: flex;
   position: absolute;
 }
-  .carouselBoxText {
+
+.carouselBoxText {
   position: relative;
   left: 100px;
-  top: 100px;
+  top: 450px;
+  font: $TitleFont;
+  font-size: 72px;
+  color: $Tertiary;
 }
+
 .homeContainer {
   margin-top: 150px;
   display: flex;
   justify-content: space-evenly;
 }
+
 .roundImage {
   width: 700px;
   height: 700px;
@@ -104,20 +114,25 @@
 .homeText {
   width: 500px;
 }
+
 .homeTextTitle {
   font-family: $TitleFont;
   font-size: 36px;
 }
-.homeTextCustomText, .homeCTA {
+
+.homeTextCustomText,
+.homeCTA {
   font-family: $MainFont;
   font-size: 22px;
   padding-top: 40px;
 }
+
 .FSCboks {
   margin-top: 150px;
   display: flex;
   justify-content: space-evenly;
 }
+
 .FSClogo {
   width: 500px;
   height: 400px;
@@ -128,6 +143,7 @@
 .FSClogo:hover {
   scale: 102%;
 }
+
 .FSCtitle {
   width: 700px;
   font-family: $TitleFont;
@@ -148,7 +164,8 @@
   height: 60px;
 }
 
-.buttonGallery, .buttonContact {
+.buttonGallery,
+.buttonContact {
   width: 230px;
   height: 60px;
   background-color: $Secondary;
@@ -162,13 +179,14 @@
   border-radius: 5px;
   font-size: 20px;
   transition: 0.25s;
-  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2), 0 4px 16px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .buttonGallery {
   background-color: $Primary;
   border: solid 2px $Primary;
 }
+
 .buttons {
   a {
     text-decoration: none;
@@ -186,6 +204,4 @@
   color: $Black;
   border: solid 2px $Primary;
 
-}
-
-</style>
+}</style>

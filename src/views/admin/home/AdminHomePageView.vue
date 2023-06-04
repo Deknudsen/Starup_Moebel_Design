@@ -1,7 +1,5 @@
 <template>
   <div>
-
-
     <v-carousel cycle height="600" hide-delimiters :show-arrows="false">
       <v-carousel-item v-for="carousel in carouselsData" :key="carousel" :src="carousel.imageUrl" :alt="carousel.name">
         <router-link :to="carousel.link" class="carouselLink">
@@ -12,22 +10,6 @@
           </div>
         </router-link>
       </v-carousel-item>
-
-      <!-- <v-carousel-item src="@/assets/woodcut.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80" cover>
-        <router-link to="/senge" class="carouselLink">
-          <div class="carouselBoxOne">
-            <div class="carouselBoxText">
-              <p>huuhhuuh</p>
-            </div>
-          </div>
-        </router-link>
-      </v-carousel-item>
-
-      <v-carousel-item src="@/assets/painting.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
-        cover></v-carousel-item>
-
-      <v-carousel-item src="@/assets/child.jpg" alt="placehold img" gradient="to top right, #9F755180, #D1A67C80"
-        cover></v-carousel-item> -->
     </v-carousel>
     <router-link to="/adminCarosel">rediger slider</router-link>
     <div class="homeContainer">
@@ -62,7 +44,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, /*computed*/ } from 'vue'
+import { onMounted, ref } from 'vue'
 import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import router from '@/router/index.js'
 import useCarousel from '@/modules/useCarousel'
@@ -87,7 +69,6 @@ onMounted(() => {
     }
   })
 })
-
 
 </script>
 
