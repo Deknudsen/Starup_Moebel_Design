@@ -14,7 +14,7 @@
                     <button @click="deletePart(part)">Slet</button>
                 </div>
                 <v-file-input variant="solo" label="Image input" @change="handleFileUpload"
-                accept="image/png, image/jpeg, image/jpg, image/bmp"></v-file-input>
+                    accept="image/png, image/jpeg, image/jpg, image/bmp"></v-file-input>
                 <div class="partTitle">
                     <input type="text" v-model="part.title">
                 </div>
@@ -30,6 +30,7 @@
 
 import { onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import useParts from '@/modules/useParts'
 import router from '@/router/index.js'
 
@@ -63,9 +64,22 @@ const handleFileUpload = (event) => {
     }
 }
 
+let auth
+const isLoggedin = ref(false)
 onMounted(() => {
-    getPartsData()
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            isLoggedin.value = true
+            getPartsData()
+        }
+        else {
+            router.push({ path: '/login' })
+            isLoggedin.value = false
+        }
+    })
 })
+
 
 </script>
 
@@ -78,6 +92,7 @@ onMounted(() => {
 .leftBox {
     display: flex;
 }
+
 .partContainer {
     display: flex;
     min-height: 800px;

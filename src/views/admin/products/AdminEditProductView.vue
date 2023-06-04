@@ -29,6 +29,7 @@
 <script setup>
 
 import { onMounted, ref, computed } from 'vue';
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import { useRoute } from 'vue-router';
 import useProducts from '@/modules/useProducts'
 import router from '@/router/index.js'
@@ -63,8 +64,20 @@ const handleFileUpload = (event) => {
     }
 }
 
+let auth
+const isLoggedin = ref(false)
 onMounted(() => {
-    getProductsData()
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            isLoggedin.value = true
+            getProductsData()
+        }
+        else {
+            router.push({ path: '/login' })
+            isLoggedin.value = false
+        }
+    })
 })
 
 </script>

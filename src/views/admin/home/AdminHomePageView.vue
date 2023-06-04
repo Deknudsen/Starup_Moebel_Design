@@ -62,17 +62,32 @@
 </template>
 
 <script setup>
-import { onMounted, /*computed*/ } from 'vue'
+import { onMounted, ref, /*computed*/ } from 'vue'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
+import router from '@/router/index.js'
 import useCarousel from '@/modules/useCarousel'
 //import useTextbox from '@/modules/useTextbox'
 
 const { carouselsData, getActiveCarouselsData } = useCarousel()
 //const { textboxData, getHomepageTextboxData } = useTextbox()
 
+let auth
+const isLoggedin = ref(false)
 onMounted(() => {
-  getActiveCarouselsData()
-  //getHomepageTextboxData()
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedin.value = true
+      getActiveCarouselsData()
+      //getHomepageTextboxData()
+    }
+    else {
+      router.push({ path: '/login' })
+      isLoggedin.value = false
+    }
+  })
 })
+
 
 </script>
 
@@ -102,6 +117,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-evenly;
 }
+
 .roundImage {
   width: 700px;
   height: 700px;
@@ -111,14 +127,15 @@ onMounted(() => {
 .homeText {
   width: 500px;
 }
+
 .homeTextTitle {
   font-family: $TitleFont;
   font-size: 36px;
 }
-.homeTextCustomText, .homeCTA {
+
+.homeTextCustomText,
+.homeCTA {
   font-family: $MainFont;
   font-size: 22px;
   padding-top: 40px;
-}
-
-</style>
+}</style>

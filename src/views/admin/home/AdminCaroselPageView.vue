@@ -48,6 +48,8 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
+import router from '@/router/index.js'
 import useCarousel from '@/modules/useCarousel'
 
 let addCaroselInfo = ref({})
@@ -96,9 +98,22 @@ const changeActive = (carousel) => {
     }
 }
 
+let auth
+const isLoggedin = ref(false)
 onMounted(() => {
-    getCarouselsData()
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedin.value = true
+      getCarouselsData()
+    }
+    else {
+      router.push({ path: '/login' })
+      isLoggedin.value = false
+    }
+  })
 })
+
 
 </script>
 

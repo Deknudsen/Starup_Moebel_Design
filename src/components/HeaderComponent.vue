@@ -1,16 +1,26 @@
 <template>
   <header>
     <div class="logo">
-      <router-link to="/"> Logo </router-link>
+      <router-link to="/">
+        <v-img src="../assets/image/Starup_Moebel_Design.svg" alt="Starup Møbel Design Logo"></v-img>
+      </router-link>
     </div>
-    <div class="headerlinks">
+    <div class="headerlinks" v-if="!isLoggedin">
       <router-link class="underlineAnimation" to="/"> Forside </router-link>
       <router-link class="underlineAnimation" to="/buildabed"> Build-a-Bed </router-link>
       <router-link class="underlineAnimation" to="/produkter"> Produkter </router-link>
       <router-link class="underlineAnimation" to="/maleguide"> Maleguide </router-link>
       <router-link class="underlineAnimation" to="/om-os"> Om os </router-link>
       <router-link class="underlineAnimation" to="/kontakt"> Kontakt </router-link>
-      <button class="underlineAnimation logOutButton" v-if="isLoggedin" @click="logOut">Log out</button>
+    </div>
+    <div class="headerlinks" v-else>
+      <router-link class="underlineAnimation" to="/adminHome">Forside</router-link>
+      <router-link class="underlineAnimation" to="/adminParts">Build-a-Bed</router-link>
+      <router-link class="underlineAnimation" to="/adminProducts"> Produkter </router-link>
+      <router-link class="underlineAnimation" to="/maleguide"> Maleguide </router-link>
+      <router-link class="underlineAnimation" to="/om-os"> Om os </router-link>
+      <router-link class="underlineAnimation" to="/kontakt"> Kontakt </router-link>
+      <button class="underlineAnimation logOutButton"  @click="logOut">Log out</button>
     </div>
   </header>
 </template>
@@ -52,6 +62,7 @@ header {
 
 .logo {
   width: 16%;
+  height: 80px;
 }
 
 .headerlinks {
@@ -66,10 +77,6 @@ header {
     text-decoration: none;
     color: black;
     font-family: $TitleFont;
-  }
-
-  .logOutButton {
-    color: red;
   }
 
   .router-link-exact-active {

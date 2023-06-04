@@ -3,37 +3,49 @@
         <div class="sengeHeader"> Her vises tidligere produkter, som vi har produceret. </div>
         <button @click="addProductSite">Tilføj Produkt</button>
 
-        <div class="gallery"> 
-          <div class="imageBox" v-for="product in productsData" :key="product">
-            <router-link :to="{ name:'admin edit products', params:{ id : product.id }}">
-              <div class="cardBox">
-                <h2>{{ product.title }}</h2>
-                <div class="galleryImage">
-                 <img :src="product.imageUrl" :alt="product.name" /> 
-                </div>
-              </div>
-            </router-link>
-            
-          </div>
-        </div>
-     </div> 
+        <div class="gallery">
+            <div class="imageBox" v-for="product in productsData" :key="product">
+                <router-link :to="{ name: 'admin edit products', params: { id: product.id } }">
+                    <div class="cardBox">
+                        <h2>{{ product.title }}</h2>
+                        <div class="galleryImage">
+                            <img :src="product.imageUrl" :alt="product.name" />
+                        </div>
+                    </div>
+                </router-link>
 
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import useProducts from '@/modules/useProducts'
 import router from '@/router'
 
-    const { getProductsData, productsData } = useProducts()
+const { getProductsData, productsData } = useProducts()
 
-    const addProductSite = () => {
-        router.push({path: "/adminAddProducts"})
-    }    
+const addProductSite = () => {
+    router.push({ path: "/adminAddProducts" })
+}
 
-    onMounted (() => {
-        getProductsData()
+let auth
+const isLoggedin = ref(false)
+onMounted(() => {
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            isLoggedin.value = true
+            getProductsData()
+        }
+        else {
+            router.push({ path: '/login' })
+            isLoggedin.value = false
+        }
     })
+})
 
 </script>
 
@@ -56,7 +68,7 @@ import router from '@/router'
     align-items: center;
     gap: 50px;
     margin: 70px 10% 130px 10%;
-  }
+}
 
 .productCards {
     display: flex;
@@ -65,7 +77,7 @@ import router from '@/router'
     gap: 40px;
     margin-top: 50px;
     border: #272727;
-    
+
 }
 
 a:link {
@@ -91,21 +103,20 @@ a:link {
     justify-content: center;
     align-items: center;
 
-     img {
+    img {
         object-fit: cover;
-        width:auto;
+        width: auto;
         height: 100%;
         overflow: hidden;
     }
- }
+}
 
 .infoBox {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin: 15px;
     flex-direction: column;
     text-align: left;
     color: #272727;
 }
-
 </style>

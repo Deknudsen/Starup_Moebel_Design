@@ -3,37 +3,50 @@
         <div class="sengeHeader"> Her vises de forskellige dele, som vi tilbyder til vores samle selv senge. </div>
         <button @click="addPartSite">Tilføj Del</button>
 
-        <div class="gallery"> 
-          <div class="imageBox" v-for="part in partsData" :key="part">
-            <router-link :to="{ name:'admin edit parts', params:{ id : part.id }}">
-              <div class="cardBox">
-                <h2>{{ part.title }}</h2>
-                <div class="galleryImage">
-                 <img :src="part.imageUrl" :alt="part.name" /> 
-                </div>
-              </div>
-            </router-link>
-            
-          </div>
-        </div>
-     </div> 
+        <div class="gallery">
+            <div class="imageBox" v-for="part in partsData" :key="part">
+                <router-link :to="{ name: 'admin edit parts', params: { id: part.id } }">
+                    <div class="cardBox">
+                        <h2>{{ part.title }}</h2>
+                        <div class="galleryImage">
+                            <img :src="part.imageUrl" :alt="part.name" />
+                        </div>
+                    </div>
+                </router-link>
 
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import useParts from '@/modules/useParts'
 import router from '@/router'
 
-    const { getPartsData, partsData } = useParts()
+const { getPartsData, partsData } = useParts()
 
-    const addPartSite = () => {
-        router.push({path: "/adminAddParts"})
-    }    
+const addPartSite = () => {
+    router.push({ path: "/adminAddParts" })
+}
 
-    onMounted (() => {
-        getPartsData()
+
+let auth
+const isLoggedin = ref(false)
+onMounted(() => {
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            isLoggedin.value = true
+            getPartsData()
+        }
+        else {
+            router.push({ path: '/login' })
+            isLoggedin.value = false
+        }
     })
+})
 
 </script>
 
@@ -56,7 +69,7 @@ import router from '@/router'
     align-items: center;
     gap: 50px;
     margin: 70px 10% 130px 10%;
-  }
+}
 
 .partCards {
     display: flex;
@@ -65,7 +78,7 @@ import router from '@/router'
     gap: 40px;
     margin-top: 50px;
     border: #272727;
-    
+
 }
 
 a:link {
@@ -91,21 +104,20 @@ a:link {
     justify-content: center;
     align-items: center;
 
-     img {
+    img {
         object-fit: cover;
-        width:auto;
+        width: auto;
         height: 100%;
         overflow: hidden;
     }
- }
+}
 
 .infoBox {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin: 15px;
     flex-direction: column;
     text-align: left;
     color: #272727;
 }
-
 </style>

@@ -26,9 +26,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import useParts from '@/modules/useParts'
+import { onMounted, ref } from 'vue'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import router from '@/router/index.js'
+import useParts from '@/modules/useParts'
 
 let addPartInfo = ref({})
 let selectedFile = ref({})
@@ -53,6 +54,22 @@ const handleFileUpload = (event) => {
 const canclePart = () => {
     router.push({ path: '/adminParts' })
 }
+
+let auth
+const isLoggedin = ref(false)
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedin.value = true
+    }
+    else {
+      router.push({ path: '/login' })
+      isLoggedin.value = false
+    }
+  })
+})
+
 
 </script>
 
