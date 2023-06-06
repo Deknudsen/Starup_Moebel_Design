@@ -4,7 +4,6 @@
 
         <div class="box">
             <div class="contactLeftBox">
-                <div class="customTextBox">lorem ipsum</div>
                 <div class="textBox"> 
                     Har du nogle spørgsmål, er du mere end velkommen til at kontakte os.
                     <br><br> Du finder os her! <br><br> 
@@ -39,8 +38,10 @@
                 </div>
 
                 <div class="facebookBox">
-                    <div class="facebook pa-6"> 
-                        <v-img src="../assets/fb.png" alt="placehold img"></v-img>
+                    <div class="facebook pa-6">
+                        <a class="facebookLink" href="https://www.facebook.com/groups/1592867194369757" target="_blank">
+                            <v-img src="../assets/fb.png" alt="placehold img"></v-img>
+                        </a>
                     </div>
                     <div class="facebookText">
                         Tilmeld dig vores gruppe på Facebook <br> og gå ikke glip af vores opslag, når vi poster nyheder!
@@ -90,7 +91,7 @@ const { faqsData, getFaqsData } = useFaqs()
   font-family: $TitleFont;
   font-size: 26px;
   color: $Black;
-  margin: 60px 0 0 130px;
+  padding: 60px 0 0 130px;
 }
 
 iframe {
@@ -99,7 +100,7 @@ iframe {
     // filter: invert(90%);
 }
 // filter = dark theme
-.customTextBox, .textBox, .FAQdescription {
+.textBox, .FAQdescription {
     width: 65%;
     font-family: $MainFont;
     font-size: 18px;
@@ -122,6 +123,11 @@ iframe {
     height: 100px;
     display: flex;
     justify-content: center;
+
+    .facebookLink {
+        width: 100px;
+        height: 100px;
+    }
 }
 .phoneBox, .mailBox, .addressBox, .facebookBox {
     height: 100px;

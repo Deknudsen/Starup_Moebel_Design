@@ -1,57 +1,68 @@
 <template>
     <div class="toBeDeletedBox">
-    <!-- <div class="productContainer" v-for="product in filteredPostOnId" :key="product"> -->
-        <div class="leftBox">
-            <div class="productPictureBox">
-                <v-img class="productPageImg" src="../assets/placehold.png" alt="placehold" /> 
-            </div>
-        </div>
+        <div class="productContainer" v-for="product in filteredProductOnId" :key="product">
 
-        <div class="rightBox">
-             <div class="productTitle"> <!-- <h1> {{product.productTitle}} </h1> --> Product Title
-                    
+            <div class="leftBox">
+                <div class="productPictureBox">
+                    <v-img class="productPageImg" :src="product.imageUrl" alt="placehold" cover></v-img>
+                </div>
             </div>
-            <div class="customText"> loremipsumloremimpsum </div>
+
+            <div class="rightBox">
+                <div class="productTitle">
+                    <h1> {{ product.title }} </h1>
+                </div>
+                <div class="customText">
+                    <p> {{ product.text }} </p>
+                </div>
+            </div>
         </div>
-    <!-- </div> -->
     </div>
-
 </template>
 
 <script setup>
 
-/* import { onMounted, ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import useProducts from '@/modules/useProducts'
 
 
-const { posts, getPostsData } = usePosts()
+const { productsData, getProductsData } = useProducts()
 
 onMounted(() => {
-    getPostsData()
+    getProductsData()
 })
 
 const route = useRoute()
 const routeId = ref(route.params.id)
 
-let filteredPostOnId = computed(() => {
-    return posts.value.filter(i => i.id == routeId.value)
+let filteredProductOnId = computed(() => {
+    return productsData.value.filter(i => i.id == routeId.value)
 })
- */
+
 </script>
 
 
 <style lang="scss" scoped>
-    
 .toBeDeletedBox {
     display: flex;
 }
+
+.productContainer {
+    display: flex;
+}
+
 .leftBox {
     display: flex;
 }
 
 .productPictureBox {
-    height: auto;
+    height: 800px;
     width: 750px;
+
+    .productPageImg {
+        height:100%
+    }
 }
 
 .rightBox {
@@ -70,5 +81,4 @@ let filteredPostOnId = computed(() => {
     color: $Black;
 
 }
-
 </style>

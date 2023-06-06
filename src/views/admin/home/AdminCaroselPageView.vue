@@ -63,7 +63,7 @@ const handleFileUpload = (event) => {
     const reader = new FileReader()
 
     reader.onload = () => {
-        selectedFile.value = event.target.files[0]
+        selectedFile.value = file
         showImage.value = reader.result
     }
 

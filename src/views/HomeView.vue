@@ -15,7 +15,7 @@
     </v-carousel>
     <div class="homeContainer">
       <div class="roundImage">
-        <v-img class="roundImage" cover src="../assets/lampe.png" alt="placehold img"></v-img>
+        <v-img class="roundImage" cover src="../assets/lampe.png" alt="Finer Lampe"></v-img>
       </div>
       <div class="homeText">
         <div class="homeTextTitle"> Starup Møbel Design </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="FSClogo">
         <a href="https://dk.fsc.org/dk-da/intro-til-fsc/hvad-er-fsc">
-          <v-img class="FSClogo" src="../assets/FSC.png" alt="placehold img"></v-img>
+          <v-img class="FSClogo" src="@/assets/FSC.png" alt="FSCLogo"></v-img>
         </a>
       </div>
     </div>

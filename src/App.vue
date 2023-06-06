@@ -57,7 +57,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+  * {
+    background-color: $White;
+  }
 //Header
 .header {
   font-family: $TitleFont;

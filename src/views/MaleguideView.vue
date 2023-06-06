@@ -3,7 +3,7 @@
         <div class="hero">
             <div class="heroText"> Maleguide </div>
             <div class="maleguideImage"> 
-                <v-img class="maleguidePic" cover src="../assets/maleguide.jpg" alt="placehold img" gradient="to top right, #9F755155, #D1A67C55"></v-img>
+                <v-img class="maleguidePic" cover src="../assets/maleguide.jpg" alt="Maleguid header" gradient="to top right, #9F755155, #D1A67C55"></v-img>
             </div>
         </div>
 

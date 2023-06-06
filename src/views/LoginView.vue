@@ -14,11 +14,12 @@
                     <v-text-field 
                         v-model="password"
                         label="Password"
+                        :type="show1 ? 'text' : 'password'"
                         required
                     >
                     </v-text-field>
                     <v-btn
-                        color="primary"
+                        color="#3a744e"
                         @click.prevent="logIn()"
                     >
                         Login
@@ -59,7 +60,7 @@ onMounted(() => {
 <style lang="scss">
     .v-row {
     justify-content: center;
-    margin: 170px;
+    padding: 170px;
 }
 
 </style>
