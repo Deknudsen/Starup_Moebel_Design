@@ -63,6 +63,7 @@ header {
 .logo {
   width: 16%;
   height: 80px;
+  padding: 7px;
 }
 
 .headerlinks {

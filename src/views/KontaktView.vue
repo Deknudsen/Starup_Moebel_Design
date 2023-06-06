@@ -38,6 +38,15 @@
                     </div>
                 </div>
 
+                <div class="facebookBox">
+                    <div class="facebook pa-6"> 
+                        <v-img src="../assets/fb.png" alt="placehold img"></v-img>
+                    </div>
+                    <div class="facebookText">
+                        Tilmeld dig vores gruppe på Facebook <br> og gå ikke glip af vores opslag, når vi poster nyheder!
+                    </div>
+                </div>
+
             </div>
             <div class="contactRightBox">
                 <div class="container">
@@ -107,12 +116,19 @@ iframe {
     justify-content: center;
 
 }
-.phoneBox, .mailBox, .addressBox {
+
+.facebook {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.phoneBox, .mailBox, .addressBox, .facebookBox {
     height: 100px;
     display: flex;
     margin-bottom: 30px;
 }
-.phoneText, .mailText, .addressText {
+.phoneText, .mailText, .addressText, .facebookText {
     padding-left: 50px;
     font-size: 20px;
     height: 100px;
